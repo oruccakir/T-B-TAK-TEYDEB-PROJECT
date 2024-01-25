@@ -460,26 +460,26 @@ def tempratureGrafik(tempratureQueue):
 
 if __name__ == "__main__":
 
-    CO2queue = multiprocessing.Queue()
+    #CO2queue = multiprocessing.Queue()
     MFCqueue = multiprocessing.Queue()
     tempratureQueue = multiprocessing.Queue()
 
-    CO2_CSV_queue = multiprocessing.Queue()
-    modbus_CSV_queue  = multiprocessing.Queue()
+    #CO2_CSV_queue = multiprocessing.Queue()
+    #modbus_CSV_queue  = multiprocessing.Queue()
 
-    modbus_set_queue = multiprocessing.Queue()
+    #modbus_set_queue = multiprocessing.Queue()
 
-    CO2SensorProcess = multiprocessing.Process(target=CO2Sensor, args=(CO2queue,CO2_CSV_queue))
+    #CO2SensorProcess = multiprocessing.Process(target=CO2Sensor, args=(CO2queue,CO2_CSV_queue))
     modbusDevicesProcess =  multiprocessing.Process(target=modbusDevices, args=(MFCqueue,tempratureQueue,modbus_CSV_queue,modbus_set_queue,))
-    CSVprocess = multiprocessing.Process(target=CSVrecord, args=(CO2_CSV_queue,modbus_CSV_queue))
+    #CSVprocess = multiprocessing.Process(target=CSVrecord, args=(CO2_CSV_queue,modbus_CSV_queue))
 
-    CO2SensorProcess.start()
+    #CO2SensorProcess.start()
     modbusDevicesProcess.start()
-    CSVprocess.start()
+    #CSVprocess.start()
 
     ## Main process threadleri -> Grafikler
-    CO2grafikThread = threading.Thread(target=CO2grafik, args=(CO2queue,))
-    CO2grafikThread.start()
+    #CO2grafikThread = threading.Thread(target=CO2grafik, args=(CO2queue,))
+    #CO2grafikThread.start()
 
     MFCgrafikThread = threading.Thread(target=MFCgrafik, args=(MFCqueue,))
     MFCgrafikThread.start()
@@ -495,6 +495,6 @@ if __name__ == "__main__":
       #  while True:
           #  time.sleep(1)
     except KeyboardInterrupt:
-        CO2SensorProcess.terminate()
+        #CO2SensorProcess.terminate()
         modbusDevicesProcess.terminate()
         print("Program terminated.")
