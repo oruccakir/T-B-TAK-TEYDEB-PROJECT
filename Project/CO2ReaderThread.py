@@ -10,7 +10,7 @@ import numpy as np
 import time
 
 # create CO2 Reader class
-class CO2Reader(threading.Thread):
+class CO2ReaderThread(threading.Thread):
     def __init__(self,CO2Queue,CO2_CSV_queue):
         super().__init__()
         # get queues as intances of this class will be used in run method
@@ -67,7 +67,7 @@ class CO2Reader(threading.Thread):
                 self.kf_filter.update(percentage)
 
                 print(percentage)
-
+                
                 # get the data as dictionary
                 data = {'time': time_diff,'value': self.kf_filter.x[0]}
                 # get csv data

@@ -22,10 +22,7 @@ class WindowApp(tk.Tk):
         self.initialize_widgets()
 
     def initialize_widgets(self):
-        image_1 = self.canvas.create_image(
-            306.0,
-            545.0,
-        )
+        
 
         # Similarly, initialize other widgets like Entry, Buttons etc.
 

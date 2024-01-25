@@ -43,9 +43,11 @@ class MFCReader(threading.Thread):
             MFC_CO2_read= self.modbusClient.read_holding_registers(0,2,2)
             decoder2 = BinaryPayloadDecoder.fromRegisters(MFC_CO2_read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
             MFC_CO2_flow= decoder2.decode_32bit_float()
+            print("CO2 Data : ",MFC_CO2_flow)
 
             # read temperature data
             temprature_read= self.modbusClient.read_holding_registers(1,1,3)
+            print("Temp Data :",float(temprature_read.registers[0]/10))
 
             # hold current time and time difference
             current_time = time.perf_counter()
@@ -53,7 +55,6 @@ class MFCReader(threading.Thread):
 
             # get MFC data and save in a dictionary
             MFC_data = {'time' : time_diff,'Ar': MFC_Ar_flow,'CO2': MFC_CO2_flow}
-            print(MFC_data)
             # get temperature and save in a dictionary
             temprature_data = {'time' : time_diff,'temprature': float(temprature_read.registers[0]/10)}
             # get csv data to record in a file

@@ -1,5 +1,5 @@
 from MFCReader import MFCReader
-from CO2Reader import CO2Reader
+from CO2ReaderThread import CO2ReaderThread
 import queue
 
 
@@ -9,9 +9,14 @@ modbus_CSV_queue  = queue.Queue()
 co2_csv = queue.Queue()
 co2_queue = queue.Queue()
 
-co2_reader = CO2Reader(co2_queue,co2_csv)
+#co2_reader = CO2ReaderThread(co2_queue,co2_csv)
+#co2_reader.start()
+
+co2_reader = CO2ReaderThread(co2_queue,co2_csv)
 co2_reader.start()
 
+mfc_reader = MFCReader(MFCqueue,tempratureQueue,modbus_CSV_queue)
+mfc_reader.start()
 
 """
 import serial.tools.list_ports
