@@ -7,7 +7,7 @@ from matplotlib.figure import Figure
 
 class CO2GraphicMaker(threading.Thread):
     # define constructor
-    def __init__(self,CO2Queue,window_app):
+    def __init__(self,CO2Queue,window_app,x,y):
         # call parent contructor
         super().__init__()
         # get queue and save
@@ -17,6 +17,11 @@ class CO2GraphicMaker(threading.Thread):
         self.y_data = []
         # get tkinter reference for plotting
         self.window_app = window_app
+        # get Co2 graphc x and y values
+        self.x = x
+        self.y = y
+        # set isRunning as True
+        self.isRunning = True
     
     
     # overwrite run method
@@ -32,11 +37,11 @@ class CO2GraphicMaker(threading.Thread):
         CO2_ax.spines['right'].set_visible(False)
         CO2_ax.spines['bottom'].set_color("white")
         CO2_ax.spines['left'].set_color("white")
-        # create the canvas figure here importan to assign master as self.window_app
+        # create the canvas figure here important to assign master as self.window_app
         canvas = FigureCanvasTkAgg(figure=CO2_fig, master=self.window_app)
-        canvas.get_tk_widget().place(x=39, y=700)
+        canvas.get_tk_widget().place(x=self.x, y=self.y)
 
-        while True:
+        while self.isRunning:
             # get the data from queue
             data = self.CO2Queue.get()
             # append files to necessary list as time and value
@@ -54,5 +59,11 @@ class CO2GraphicMaker(threading.Thread):
 
             CO2_ax.tick_params(axis='both', which='both', colors='white')
 
-            canvas.draw()
+            try:
+                canvas.draw()
+            except:
+                pass
+
+        print("CO2 Maker Terminated")
+
         

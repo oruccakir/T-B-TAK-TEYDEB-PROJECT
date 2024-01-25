@@ -20,8 +20,8 @@ class MFCReader(threading.Thread):
         self.modbusClient = ModbusSerialClient(method='rtu', port = 'COM12', baudrate = 9600, bytesize = 8, parity = 'N', stopbits = 2, address=1)
         # connect the modbusClient
         self.modbusClient.connect()
-        # print information about
-        print("connected")
+        # set isRunning as True
+        self.isRunning = True
 
     
     def run(self):
@@ -32,23 +32,20 @@ class MFCReader(threading.Thread):
         # get difference time 2
         difference2 = 0
 
-        while True:
+        while self.isRunning:
 
             # read Argon data and decode
             MFC_Ar_read= self.modbusClient.read_holding_registers(0,2,1)
             decoder = BinaryPayloadDecoder.fromRegisters(MFC_Ar_read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
             MFC_Ar_flow= decoder.decode_32bit_float()
-            print("ARGON DATA : ",MFC_Ar_flow)
             # read co2 data and decode
             MFC_CO2_read= self.modbusClient.read_holding_registers(0,2,2)
             decoder2 = BinaryPayloadDecoder.fromRegisters(MFC_CO2_read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
             MFC_CO2_flow= decoder2.decode_32bit_float()
-            print("CO2 Data : ",MFC_CO2_flow)
 
             # read temperature data
             temprature_read= self.modbusClient.read_holding_registers(1,1,3)
-            print("Temp Data :",float(temprature_read.registers[0]/10))
-
+        
             # hold current time and time difference
             current_time = time.perf_counter()
             time_diff = current_time - start_time
@@ -86,3 +83,5 @@ class MFCReader(threading.Thread):
             difference2 = (time_stop - time_start) - 1 + difference1 + difference2
             # again calculate new start time for function
             func_start_time=time.perf_counter()
+
+        print("MFC Reader Terminated")

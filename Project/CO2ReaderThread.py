@@ -26,6 +26,8 @@ class CO2ReaderThread(threading.Thread):
         self.kf_filter.Q = np.array([[0.01, 0.01], [0.01, 0.01]])
         # create serial connection object to communication
         self.ser_comm = serial.Serial('COM13', 57600, bytesize=8, parity='N', stopbits=1, timeout=1)
+        # set isRunning as True
+        self.isRunning = True
 
     
     def run(self):
@@ -36,7 +38,7 @@ class CO2ReaderThread(threading.Thread):
         # get difference time 2
         difference2 = 0
 
-        while True:
+        while self.isRunning:
             # try data reading from serial connection
             try:
                 data = self.ser_comm.readline().decode('utf-8').strip()
@@ -66,8 +68,6 @@ class CO2ReaderThread(threading.Thread):
                 # update the filter
                 self.kf_filter.update(percentage)
 
-                print(percentage)
-                
                 # get the data as dictionary
                 data = {'time': time_diff,'value': self.kf_filter.x[0]}
                 # get csv data
@@ -96,3 +96,5 @@ class CO2ReaderThread(threading.Thread):
                 difference2 = (time_stop - time_start) - 1 + difference1 + difference2
                 # again calculate new start time for function
                 func_start_time=time.perf_counter()
+
+        print("CO2 Reader Terminated")
