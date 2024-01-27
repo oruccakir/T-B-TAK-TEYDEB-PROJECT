@@ -1,5 +1,5 @@
 # import threading
-import threading
+import multiprocessing
 # import serial for connection
 import serial
 # import kalman filter to filtering the data
@@ -10,7 +10,7 @@ import numpy as np
 import time
 
 # create CO2 Reader class
-class CO2ReaderThread(threading.Thread):
+class CO2ReaderThread(multiprocessing.Process):
     def __init__(self,CO2Queue,CO2_CSV_queue):
         super().__init__()
         # get queues as intances of this class will be used in run method
@@ -73,6 +73,8 @@ class CO2ReaderThread(threading.Thread):
                 data = {'time': time_diff,'value': self.kf_filter.x[0]}
                 # get csv data
                 csv_data = {'CO2Percentage' : percentage }
+
+                print(percentage)
 
                 # put CO2 data to queue
                 self.CO2Queue.put(data)

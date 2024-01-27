@@ -9,8 +9,9 @@ from WindowApp import WindowApp
 import time
 from CSVRecorder import CSVRecorder
 import threading
-
+import multiprocessing
 path="C:\\Users\\orucc\\Desktop\\Coding_Projects\\TUBITAK-TEYDEB-PROJECT\\Project\\"
+"""
 
 # create lock object
 lock = threading.Lock()
@@ -48,6 +49,25 @@ app.run()
 co2_reader.isRunning = False
 mfc_reader.isRunning = False
 csv_recorder.isRunning = False
+
+"""
+
+
+if __name__ == '__main__':
+    MFCqueue = multiprocessing.Queue()
+    tempratureQueue = multiprocessing.Queue()
+    modbus_CSV_queue  = multiprocessing.Queue()
+    co2_csv = multiprocessing.Queue()
+    co2_queue = multiprocessing.Queue()
+
+
+    co2_reader = CO2ReaderThread(co2_queue,co2_csv)
+    co2_reader.start()
+
+
+
+
+
 
 """
 import serial.tools.list_ports

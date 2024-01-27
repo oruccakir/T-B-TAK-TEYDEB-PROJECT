@@ -25,11 +25,6 @@ class MFCReader(threading.Thread):
         # get lock object
         self.lock = lock
 
-
-    def read_float_register (self,address: int, count: int = 1, slave: int = 0):
-        read= self.modbusClient.read_holding_registers(address=address, count=count,slave=slave)
-        decoder = BinaryPayloadDecoder.fromRegisters(read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
-        return decoder.decode_32bit_float()
     
     def run(self):
         # start timer to get data in every one second
@@ -43,20 +38,18 @@ class MFCReader(threading.Thread):
             # thread saving lock
             with self.lock:
                 # read Argon data and decode
-                #MFC_Ar_read= self.modbusClient.read_holding_registers(0,2,1)
-                #decoder = BinaryPayloadDecoder.fromRegisters(MFC_Ar_read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
-                #MFC_Ar_flow= decoder.decode_32bit_float()
-                MFC_Ar_flow = self.read_float_register(0,2,1)
-                # read co2 data and decode
-                #MFC_CO2_read= self.modbusClient.read_holding_registers(0,2,2)
-                #decoder2 = BinaryPayloadDecoder.fromRegisters(MFC_CO2_read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
-                #MFC_CO2_flow= decoder2.decode_32bit_float()
-                MFC_CO2_flow = self.read_float_register(0,2,2)
+                MFC_Ar_read= self.modbusClient.read_holding_registers(0,2,1)
+                decoder = BinaryPayloadDecoder.fromRegisters(MFC_Ar_read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
+                MFC_Ar_flow= decoder.decode_32bit_float()
+                    # read co2 data and decode
+                MFC_CO2_read= self.modbusClient.read_holding_registers(0,2,2)
+                decoder2 = BinaryPayloadDecoder.fromRegisters(MFC_CO2_read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
+                MFC_CO2_flow= decoder2.decode_32bit_float()
 
                 # read temperature data
                 temprature_read= self.modbusClient.read_holding_registers(1,1,3)
-
-                
+            
+                pass
 
         
             # hold current time and time difference
@@ -69,7 +62,7 @@ class MFCReader(threading.Thread):
             temprature_data = {'time' : time_diff,'temprature': float(temprature_read.registers[0]/10)}
             # get csv data to record in a file
             csv_data = {'Ar': float(MFC_Ar_flow),'CO2': float(MFC_CO2_flow),'temprature': float(temprature_read.registers[0]/10)}
-            print(f"'Ar': {float(MFC_Ar_flow)},'CO2': {float(MFC_CO2_flow)},'temprature': {float(temprature_read.registers[0]/10)}")
+
             # get the saved data and put necessary queues
             # add the co2 and argon information to MFC queue
             self.MFCQueue.put(MFC_data)
