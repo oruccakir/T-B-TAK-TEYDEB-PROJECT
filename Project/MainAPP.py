@@ -26,14 +26,13 @@ co2_queue = queue.Queue()
 co2_reader = CO2ReaderThread(co2_queue,co2_csv)
 co2_reader.start()
 
-mfc_reader = MFCReader(MFCqueue,tempratureQueue,modbus_CSV_queue,lock)
+mfc_reader = MFCReader(MFCqueue,tempratureQueue,modbus_CSV_queue,lock,0.05)
 mfc_reader.start()
 
 app = WindowApp(mfc_reader,lock)
 
 co2_maker = CO2GraphicMaker(co2_queue,app,39,700)
 co2_maker.start()
-
 mfc_make = MFCGraphicMaker(MFCqueue,app,278,112)
 mfc_make.start()
 

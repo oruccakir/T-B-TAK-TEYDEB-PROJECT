@@ -10,14 +10,14 @@ import time
 
 # create MFC reader thread class for reading Ar, CO2 and temperature
 class MFCReader(threading.Thread):
-    def __init__(self,MFCQueue,temperatureQueue,modbus_CSV_queue,lock):
+    def __init__(self,MFCQueue,temperatureQueue,modbus_CSV_queue,lock,timeout=0.1):
         super().__init__()
         # get queues as intances of this class will be used in run method
         self.MFCQueue = MFCQueue
         self.temperatureQueue = temperatureQueue
         self.modbus_CSV_queue = modbus_CSV_queue
         # create modBusClient object 
-        self.modbusClient = ModbusSerialClient(method='rtu', port = 'COM12', baudrate = 9600, bytesize = 8, parity = 'N', stopbits = 2, address=1)
+        self.modbusClient = ModbusSerialClient(method='rtu', port = 'COM12', baudrate = 9600, bytesize = 8, parity = 'N', stopbits = 2, address=1,timeout=timeout)
         # connect the modbusClient
         self.modbusClient.connect()
         # set isRunning as True
@@ -52,24 +52,18 @@ class MFCReader(threading.Thread):
                 #decoder2 = BinaryPayloadDecoder.fromRegisters(MFC_CO2_read.registers, byteorder=Endian.BIG, wordorder=Endian.BIG)
                 #MFC_CO2_flow= decoder2.decode_32bit_float()
                 MFC_CO2_flow = self.read_float_register(0,2,2)
-
                 # read temperature data
                 temprature_read= self.modbusClient.read_holding_registers(1,1,3)
 
-                
-
-        
             # hold current time and time difference
             current_time = time.perf_counter()
             time_diff = current_time - start_time
-
             # get MFC data and save in a dictionary
             MFC_data = {'time' : time_diff,'Ar': MFC_Ar_flow,'CO2': MFC_CO2_flow}
             # get temperature and save in a dictionary
             temprature_data = {'time' : time_diff,'temprature': float(temprature_read.registers[0]/10)}
             # get csv data to record in a file
             csv_data = {'Ar': float(MFC_Ar_flow),'CO2': float(MFC_CO2_flow),'temprature': float(temprature_read.registers[0]/10)}
-            print(f"'Ar': {float(MFC_Ar_flow)},'CO2': {float(MFC_CO2_flow)},'temprature': {float(temprature_read.registers[0]/10)}")
             # get the saved data and put necessary queues
             # add the co2 and argon information to MFC queue
             self.MFCQueue.put(MFC_data)
