@@ -1,14 +1,9 @@
-from MFCReader import MFCReader
-from CO2ReaderThread import CO2ReaderThread
-from CO2GraphicMaker import CO2GraphicMaker
-from MFCGraphicMaker import MFCGraphicMaker
-from TempGraphicMaker import TempGraphicMaker
-from ButtonThread import ButtonThread
+from GraphicMaker import *
+from Reader import *
+import threading
 import queue
 from WindowApp import WindowApp
-import time
 from CSVRecorder import CSVRecorder
-import threading
 
 path="C:\\Users\\orucc\\Desktop\\Coding_Projects\\TUBITAK-TEYDEB-PROJECT\\Project\\"
 
@@ -47,11 +42,3 @@ app.run()
 co2_reader.isRunning = False
 mfc_reader.isRunning = False
 csv_recorder.isRunning = False
-
-"""
-import serial.tools.list_ports
-
-ports = serial.tools.list_ports.comports()
-for port, desc, hwid in sorted(ports):
-    print(f"{port}: {desc} [{hwid}]")
-"""

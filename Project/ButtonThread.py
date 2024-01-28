@@ -38,7 +38,6 @@ class ButtonThread(threading.Thread):
         CO2_value = self.data["CO2"]
         temprature = self.data["Temp"]
         ramp = self.data["Ramp"]
-        print("Clicked")
         
         with self.lock:
             start = time.perf_counter()
