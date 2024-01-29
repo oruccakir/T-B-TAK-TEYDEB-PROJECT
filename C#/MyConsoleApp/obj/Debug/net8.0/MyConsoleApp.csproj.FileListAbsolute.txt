@@ -1,0 +1,15 @@
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\MyConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\MyConsoleApp.AssemblyInfoInputs.cache
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\MyConsoleApp.AssemblyInfo.cs
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\MyConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\MyConsoleApp.sourcelink.json
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\bin\Debug\net8.0\MyConsoleApp.exe
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\bin\Debug\net8.0\MyConsoleApp.deps.json
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\bin\Debug\net8.0\MyConsoleApp.runtimeconfig.json
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\bin\Debug\net8.0\MyConsoleApp.dll
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\bin\Debug\net8.0\MyConsoleApp.pdb
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\MyConsoleApp.dll
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\refint\MyConsoleApp.dll
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\MyConsoleApp.pdb
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\MyConsoleApp.genruntimeconfig.cache
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\C#\MyConsoleApp\obj\Debug\net8.0\ref\MyConsoleApp.dll
