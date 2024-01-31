@@ -3,3 +3,5 @@
 
 # ignore build output directory
 build/
+
+.dll
