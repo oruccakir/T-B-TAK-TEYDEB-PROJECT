@@ -1,0 +1,15 @@
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\bin\Debug\net8.0\try.exe
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\bin\Debug\net8.0\try.deps.json
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\bin\Debug\net8.0\try.runtimeconfig.json
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\bin\Debug\net8.0\try.dll
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\bin\Debug\net8.0\try.pdb
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.AssemblyInfoInputs.cache
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.AssemblyInfo.cs
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.csproj.CoreCompileInputs.cache
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.sourcelink.json
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.dll
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\refint\try.dll
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.pdb
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.genruntimeconfig.cache
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\ref\try.dll
