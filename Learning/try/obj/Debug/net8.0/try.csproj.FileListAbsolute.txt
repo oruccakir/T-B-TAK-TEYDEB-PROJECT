@@ -13,3 +13,6 @@ C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\D
 C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.pdb
 C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.genruntimeconfig.cache
 C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\ref\try.dll
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.csproj.AssemblyReference.cache
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\bin\Debug\net8.0\EasyModbus.dll
+C:\Users\orucc\Desktop\Coding_Projects\TUBITAK-TEYDEB-PROJECT\Learning\try\obj\Debug\net8.0\try.csproj.CopyComplete
