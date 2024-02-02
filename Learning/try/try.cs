@@ -3,20 +3,16 @@ using EasyModbus;
 using System;
 class Modbus{
 
+
     int num;
     Modbus(int num)
     {
         this.num = num;
     }
 
-    public string ToString()
-    {
-        return "" + num;
-    }
 
  
     static void Main(string [] args){
-
         Modbus md = new Modbus(0);
 
         string ipAddress = "klvnlkd";
@@ -25,8 +21,8 @@ class Modbus{
         //ModbusClient client = new ModbusClient(ipAddress,portNumber);
 
         Console.WriteLine("Hello World");
-        Console.WriteLine(md);
         Console.WriteLine("Modbus connection");
+        Console.ReadLine();
     }
 
 }
