@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
-using System;
-
+using EasyModbus;
 namespace ModbusConnection
 
 {
@@ -19,11 +18,12 @@ namespace ModbusConnection
         {
             AllocConsole();
             Console.WriteLine("Connection Started");
+            ModbusClient client = new ModbusClient();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
-            //Console.ReadLine();
+            Application.Run(new Form1(client));
+            Console.ReadLine();
         }
     }
 }
