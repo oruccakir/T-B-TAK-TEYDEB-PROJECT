@@ -1,9 +1,17 @@
 using EasyModbus;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Threading.Tasks;
 
 namespace ModbusConnection
 {
     public partial class Form1 : Form
     {
+
+        private bool isReading = false;
+        private Chart chart;
+        private Series series;
+        ChartArea chartArea;
+
         private ModbusClient client;
         public Form1(string portID, int slaveNumID, int baudrate, int parity)
         {
@@ -17,15 +25,40 @@ namespace ModbusConnection
                 this.client.Parity = System.IO.Ports.Parity.Odd;
             else if (parity == 2)
                 this.client.Parity = System.IO.Ports.Parity.Even;
+            chart = new Chart();
+            chart.Size = new Size(250, 250);
+            chart.Location = new Point(10, 10);
+            this.Controls.Add(chart);
+            chartArea = new ChartArea();
+            chart.ChartAreas.Add(chartArea);
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+
+            series = new Series
+            {
+                Name = "Series1",
+                ChartType = SeriesChartType.Line
+            };
+            //series.ChartType = SeriesChartType.Point;
+
+            chart.Series.Add(series);
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             this.client.UnitIdentifier = (byte)(2);
-            Console.WriteLine("Read");
-            int[] arr = this.client.ReadHoldingRegisters(0, 1);
-            Console.WriteLine(arr[0]);
+            int i = 0;
+            this.isReading = true;
+            Console.WriteLine("Reading Started");
+
+            while (this.isReading)
+            {
+                this.series.Points.AddXY(i, this.client.ReadHoldingRegisters(0, 1)[0]/100);
+                await Task.Delay(1000);
+                i++;
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -38,13 +71,13 @@ namespace ModbusConnection
             this.client.WriteSingleRegister(2, 250);
             this.client.WriteSingleRegister(3, 0);
             */
+            this.isReading = false;
             this.client.UnitIdentifier = (byte)(1);
             string str1 = textBox5.Text;
             string str2 = textBox6.Text;
             string str3 = textBox7.Text;
             string str4 = textBox8.Text;
-            int register = 0;
-            int value = 0;
+            int value;
             if (str1.Length != 0)
             {
                 value = int.Parse(str1);
@@ -70,6 +103,7 @@ namespace ModbusConnection
               this.client.WriteSingleRegister(3, value);
               
             }
+            this.isReading = false;
 
         }
 
