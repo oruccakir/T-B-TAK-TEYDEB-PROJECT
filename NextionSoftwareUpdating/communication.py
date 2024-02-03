@@ -14,15 +14,28 @@ time.sleep(1)
 try:
     # Sending a command (example: get the text of a component with .txt attribute)
     # Replace 'component_name' with your actual component's name
-    ser.write('DRAKJHSUYDGBNCJHGJKSHBDNÿÿÿ'.encode())
+    
+    """
+    ser.write('DRAKJHSUYDGBNCJHGJKSHBDN\xFF\xFF\xFF'.encode('utf-8'))
     time.sleep(0.135)
-    ser.write('connectÿÿÿ'.encode())
+    ser.write('connect\xFF\xFF\xFF'.encode())
     time.sleep(0.135)
-    ser.write('ÿÿconnectÿÿÿ'.encode())
-
+    ser.write('\xFF\xFFconnect\xFF\xFF\xFF'.encode())
+    """
     while True:
-        response = ser.read(ser.inWaiting())
+        response = ser.read(ser.inWaiting()).decode('utf-8')
+        print(response)
         time.sleep(1)
+
+    ser.write("t8.txt=".encode())
+    ser.write("0x22".encode())
+    ser.write("Alper_bebesi".encode())
+    ser.write("0x22".encode())
+    ser.write("0xff".encode())
+    ser.write("0xff".encode())
+    ser.write("0xff".encode())
+
+    
 
 
 except Exception as e:
