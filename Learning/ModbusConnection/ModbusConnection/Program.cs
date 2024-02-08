@@ -18,7 +18,6 @@ namespace ModbusConnection
         static void Main()
         {
             AllocConsole();
-            Console.WriteLine("Connection Started");
             ModbusClient client = new ModbusClient();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
